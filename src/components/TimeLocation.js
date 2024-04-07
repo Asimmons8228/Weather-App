@@ -3,15 +3,15 @@ import React from 'react';
 import { formatToLocalTime } from '../services/weatherService'; // Importing utility function for formatting time
 
 // TimeLocation component for displaying time and location
-const TimeLocation = ({ weather: { dt, timezone, name, country }, favorites, setFavorites }) => {
+const TimeLocation = ({ weather: { dt, timezone, name, country, id}, favorites, setFavorites }) => {
     // Function to handle adding location to favorites
     const handleAddFavorites = () => {
         // Check if location already exists in favorites
         for (let i = 0; i < favorites.length; i++) {
-            if (favorites[i].title === name) return;
+            if (favorites[i].id === id) return;
         }
         // If location does not exist in favorites, add it
-        const newFavorites = [...favorites, { id: 1, title: name }];
+        const newFavorites = [...favorites, {id, title: name }];
         setFavorites(newFavorites); // Update favorites state
         localStorage.setItem("favorites", JSON.stringify(newFavorites)); // Update favorites in local storage
     };

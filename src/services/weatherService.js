@@ -30,14 +30,15 @@ const formatCurrentWeather = (data) => {
         dt,
         sys: { country, sunrise, sunset },
         weather,
-        wind: { speed }
+        wind: { speed },
+        id
     } = data;
 
     // Destructure weather details from the weather array.
     const { main: details, icon, description } = weather[0];
 
     // Return formatted current weather data.
-    return { lat, lon, temp, feels_like, temp_min, temp_max, humidity, name, dt, country, sunrise, sunset, speed, details, icon, description };
+    return { lat, lon, temp, feels_like, temp_min, temp_max, humidity, name, dt, country, sunrise, sunset, speed, details, icon, description, id };
 };
 
 // Function to format forecast weather data received from API response.
@@ -53,7 +54,7 @@ const formatForecastWeather = (data) => {
         return {
             title: formatToLocalTime(d.dt, timezone, 'ccc'), // Format forecast time to local time.
             temp: d.temp.day, // Extract daily temperature.
-            icon: d.weather[0].icon // Extract weather icon code.
+            icon: d.weather[0].icon, // Extract weather icon code.
         };
     });
 
