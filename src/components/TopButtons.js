@@ -3,7 +3,7 @@ import React from 'react';
 // TopButtons component for rendering buttons for favorite cities
 const TopButtons = ({ setQuery, favorites }) => {
     return (
-        <div className='flex items-center justify-around my-6'>
+        <div className='flex items-center justify-around my-6 border-solid border-2 border-white-700'>
             {/* Mapping through favorite cities and rendering buttons */}
             {favorites.map((city) => (
                 <button 
