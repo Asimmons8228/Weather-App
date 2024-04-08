@@ -1,6 +1,6 @@
 // Importing necessary modules and components
 import './App.css';
-import TopButtons from './components/TopButtons';
+import TopButtons from './components/Favorites';
 import Inputs from './components/Inputs';
 import TimeLocation from './components/TimeLocation';
 import MainDisplay from './components/MainDisplay';
