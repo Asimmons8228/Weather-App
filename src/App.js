@@ -59,11 +59,15 @@ function App() {
 
   // Render JSX
   return (
-    <div className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
+    <div className={`mx-auto mt-4 py-5 bg-gradient-to-br h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
       {/* TopButtons component for managing favorites and search query */}
       <TopButtons favorites={favorites} setQuery={setQuery} />
+      <div className="grid grid-cols-8 gap-4">  
+      <div className="col-span-3 pl-16">
       {/* Inputs component for setting search query and units */}
-      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} weather={weather} setFavorites={setFavorites} favorites={favorites}/>
+      </div>
+      <div className="col-span-5 px-32">
       {/* Render components only if weather data is available */}
       {weather && (
         <div>
@@ -78,6 +82,8 @@ function App() {
       {/* ToastContainer for displaying toast notifications */}
       <ToastContainer autoClose={5000} theme='colored' newestOnTop={true} />
     </div>
+      </div>
+      </div>
   );
 }
 

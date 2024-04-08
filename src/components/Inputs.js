@@ -57,17 +57,19 @@ const Inputs = ({ setQuery, units, setUnits }) => {
 
     // Render JSX
     return (
-        <div className='flex flex-row justify-center my-6'>
-            {/* Input field for city search */}
-            <div className='flex flex-row w-3/4 items-center justify-center space-x-4'>
-                <input
-                    value={city}
-                    onChange={(e) => setCity(e.currentTarget.value)}
-                    onKeyDown={(e) => handleEnter(e)}
-                    type='text'
-                    placeholder='Search for city...'
-                    className='text-xl font-light p-2 w-full shadow-xl focus:outline-none first-letter:capitalize placeholder:lowercase'
-                ></input>
+    <div className='flex justify-center items-center h-screen'>
+    {/* Input field for city search */}
+    <div className='flex flex-col w-full justify-center'>
+        <input
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+            onKeyDown={(e) => handleEnter(e)}
+            type='text'
+            placeholder='Search for city...'
+            className='text-xl font-light p-2 w-full shadow-xl focus:outline-none first-letter:capitalize placeholder:lowercase'
+        />
+        <div className='flex flex-row justify-between'>
+            <div className='flex flex-row'>
                 {/* Search icon */}
                 <UilSearch
                     size={25}
@@ -102,6 +104,9 @@ const Inputs = ({ setQuery, units, setUnits }) => {
                 </button>
             </div>
         </div>
+    </div>
+</div>
+
     );
 };
 
