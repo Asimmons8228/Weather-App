@@ -57,9 +57,9 @@ const Inputs = ({ setQuery, units, setUnits }) => {
 
     // Render JSX
     return (
-    <div className='flex justify-center items-center h-screen'>
+    <div className='flex justify-center items-center h-full align-middle'>
     {/* Input field for city search */}
-    <div className='flex flex-col w-full justify-center'>
+    <div className='flex flex-col w-full align-middle justify-center'>
         <input
             value={city}
             onChange={(e) => setCity(e.currentTarget.value)}

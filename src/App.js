@@ -10,6 +10,16 @@ import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+export function useTitle(title) {
+  useEffect(() => {
+    const prevTitle = document.title
+    document.title = title
+    return () => {
+      document.title = prevTitle
+    }
+  })
+}
+
 // Main App component
 function App() {
   // Retrieve favorites from local storage or initialize as empty array
@@ -19,6 +29,8 @@ function App() {
   const [units, setUnits] = useState('imperial');
   const [weather, setWeather] = useState(null);
   const [favorites, setFavorites] = useState(tempFavorites);
+
+  useTitle("Weather App")
 
   // useEffect hook to fetch weather data and handle updates
   useEffect(() => {
@@ -59,13 +71,13 @@ function App() {
 
   // Render JSX
   return (
-    <div className={`mx-auto mt-4 py-5 bg-gradient-to-br h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
+    <div className={`mx-auto bg-gradient-to-br min-h-screen shadow-xl shadow-gray-400 ${formatBackground()}`}>
       {/* TopButtons component for managing favorites and search query */}
       <TopButtons favorites={favorites} setQuery={setQuery} />
       <div className="grid grid-cols-8 gap-4">  
       <div className="col-span-3 pl-16">
       {/* Inputs component for setting search query and units */}
-      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} weather={weather} setFavorites={setFavorites} favorites={favorites}/>
+      <Inputs className='h-screen' setQuery={setQuery} units={units} setUnits={setUnits} weather={weather} setFavorites={setFavorites} favorites={favorites}/>
       </div>
       <div className="col-span-5 px-32">
       {/* Render components only if weather data is available */}
